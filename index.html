@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My portafolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    
+    <style type="text/css">
+        *, 
+        *::before,
+        *:after{
+            box-sizing: border-box;
+        }
+        *:focus{
+            outline: none;
+        }
+        body{
+            padding: 0;
+            margin: 0;
+            background: #000;
+            color: white;
+            font-family: "Oxygen", sans-serif;
+/*            overflow-y: hidden;*/
+        }
+        a{
+            text-decoration: none;
+        }
+        img{
+            width: 100%;
+        }
+        .home img {
+            width: 50%;
+            height: 50%;
+/*
+            -webkit-filter:grayscale(60%)
+            cotrast(60%);
+            filter: grayscale(60%) contrast(100%)
+            brightness(60%);
+*/
+        }
+        .folio img {
+            filter: grayscale(100%);
+            height: 250px;
+        }
+        aside{
+            position: fixed;
+            background: #222;
+            top: 0px;
+            left: 0px;
+            width: 120px;
+            height: 100%;
+            overflow: none;
+            z-index: 1;
+            text-align: center;
+            padding: 0;
+        }
+        
+        aside img {
+            filter: grayscale(100%) contrast(50%) brightness(100%);
+            margin-bottom: -3px;
+        }
+        
+        .material-icon.md-36 {
+            font-size: 36px;
+        }
+        aside a {
+            display: block;
+            padding: 15px 0;
+            color: deepskyblue;
+/*            color: white;*/
+            transition: all 0.35s;
+            text-transform: uppercase;
+            font-size: 0.75em;
+            letter-spacing: 2px;
+        }
+        aside p {
+            margin: 0;
+            padding: 0;
+        }
+        aside a:hover{
+            background: #000;
+        }
+/*
+        aside nav a {
+            
+        }
+*/
+/*
+        aside nav a:nth-child(2) {
+            background: #000;
+            text-decoration: none;
+        }
+*/
+        aside nav a:nth-child(2):hover {
+/*            background: #b2b2b2;*/
+            color: #222;
+/*            text-decoration: none;*/
+        }
+        main{
+            max-width: 980px;
+            background: #000;
+            margin-left: 18%;
+/*            margin-left: 20%;*/
+            padding: 0px 50px 12px 50px;
+/*            padding: 12px 50px 12px 50px;*/
+/*            padding-top: -10px;*/
+        }
+        header{
+            text-align: center;
+            letter-spacing: 2px;
+        }
+        
+        header h1 {
+            font-weight: bold;
+            font-size: 4em;
+            letter-spacing: 4px;
+            color: deepskyblue;
+            margin-bottom: 20px;
+        }
+        header h5{
+            font-weight: 300;
+            font-size: 1em;
+            letter-spacing: 4px;
+            color: deepskyblue;
+/*            margin-top: 20px;*/
+/*            color: #b2b2b2;*/
+        }
+        .about,
+        .folio,
+        .contact{
+            line-height: 1.5em;
+            letter-spacing: 1px;
+            font-weight: 300;
+            width: 80%;
+/*            margin: 30px auto;*/
+            margin-left: 200px;
+/*            margin-top: 80px;*/
+/*            height: 80%;*/
+/*            margin-bottom: 20px;*/
+/*            padding-top: 1px;*/
+/*            padding-bottom: 10px;*/
+        }
+        .about h2,
+        .folio h2,
+        .contact h2{
+            letter-spacing: 4px;
+            font-weight: 300;
+            text-transform: uppercase;
+            text-decoration: none;
+/*            text-decoration: line-through;*/
+            padding-bottom: 10px;
+            padding-top: 30px;
+            margin: 100px 0 0 0;
+            text-align: center;
+            color: deepskyblue;
+        }
+        .about p{
+            color:#b2b2b2;
+        }
+        .about span{
+            font-weight: 600;
+            color: white;
+        }
+        .about h3{
+            font-weight: 300;
+            margin: 50px 0;
+        }
+        .container{
+            width: 100%;
+            background-color: #b2b2b2;
+/*            background-color: #000;*/
+            
+        }
+        .skills{
+            text-align: center;
+            padding-right: 20px;
+            line-height: 30px;
+            color: white;
+            background-color: #424242;
+        }
+        .figma{
+            width: 95%;
+        }
+        .html{
+            width: 90%;
+        }
+        .css{
+            width: 85%;
+        }
+        .js{
+            width: 65%;
+        }
+        .php{
+            width: 60%;
+        }
+        
+        .folio h3{
+            color: white;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        
+        .folio p {
+            font-size: 0.875em;
+        }
+        .row-halves {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            justify-content: space-between;
+/*            margin: 80px 0;*/
+            margin: 20px 0;
+            -webkit-flex-pack: justify;
+/*            padding-top: 80px;*/
+            padding-bottom: 80px;
+/*            margin-top: 20px;*/
+/*            margin-bottom: 20px;*/
+        }
+        .row-halves .col {
+            width: 49%;
+        }
+        .col {
+/*            border: 1px solid #222;*/
+/*            background: #222;*/
+/*            color: #b2b2b2;*/
+            padding: 10px;
+/*            padding: 10px;*/
+/*            margin-top: 1px;*/
+        }
+        label {
+            color: #b2b2b2;
+        }
+        form input[type="text"],
+        select,
+        textarea{
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border: 1px solid #222;
+            background: transparent;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            color: #b2b2b2;
+        }
+        
+        form input[type="text"]:focus, 
+        textarea:focus
+        {
+            outline: none;
+            border: 1px solid #009488;    
+        }
+        input[type="submit"] {
+            background-color: transparent;
+            color: #b2b2b2;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            border: 1px solid #222;
+            cursor: pointer;
+            transition: all 0.35s;
+        }
+        input[type="submit"] {
+            background-color: transparent;
+            color: #b2b2b2;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            border: 1px solid #222;
+            cursor: pointer;
+            transition: all 0.35s;
+        }
+        input[type="submit"]:hover{
+            background-color: #b2b2b2;
+            color: #222;
+        }
+        .contact .container {
+            margin-top: 20px;
+            margin-bottom: 100px;
+            background: transparent;
+            padding: 20px 0;
+        }
+        
+        footer {
+/*            border-top: 1px solid #272;   */
+            border-top: 1px solid #222; 
+            padding: 5px;
+/*            text-align: center;*/
+        }
+        .top-bar {
+            padding: 5px 0;
+            padding-left: 660px;
+/*            text-align: center;*/
+/*            margin: 20px;*/
+        }
+        .top-bar a{
+            margin: 10px;
+            font-size: 2em;
+/*            color: #b25262;*/
+            color: #b2b2b2;
+            transition: all 0.35s;
+            display: inline-block;
+        }
+        .top-bar a:hover{
+            transform: scale(1.1);
+/*            color: #009688;*/
+            color: deepskyblue;
+        }
+        .bottom-bar {
+            background: #000;
+            font-size: 0.75em;
+            padding-left: 660px;
+/*            text-align: center;*/
+        }
+        
+/* -------------------       boton--------------------------*/
+        :root{
+/*            --primary: #78ffcd;*/
+            --primary: deepskyblue;
+            --solid: white;
+            --btn-w: 8em;
+            --dot-w: calc(var(--btn-w)*.2);
+            --tr:calc(var(--btn-w) - var(--dot-w));
+        }
+
+        .btn{
+            position: relative;
+            margin: 30px auto;
+            width: var(--btn-w);
+            color: var(--primary);
+            border: .15em solid var(--primary);
+            border-radius: 5em;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 1.3em;
+            line-height: 2em;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+        .dot{
+            content: '';
+            position: absolute;
+            top: 0;
+            width: var(--dot-w);
+            height: 100%;
+            border-radius: 100%;
+            transition: all 300ms ease;
+            display: none;
+        }
+        .dot:after{
+            content: '';
+            position: absolute;
+            left: calc(50% - .4em);
+            top: -.4em;
+            height: 0.8em;
+            width: 0.8em;
+            background: var(--primary);
+            border-radius: 1em;
+            border: 0.25em solid var(--solid);
+            box-shadow: 0 0 .7em var(--solid),
+                        0 0 2em var(--primary);
+        }
+        .btn:hover .dot,
+        .btn:focus .dot{
+            animation: atom 2s infinite linear;
+            display: block;
+        }
+        @keyframes atom{
+            0%{transform: translateX(0) rotate(0);}
+            30%{transform: translateX(var(--tr)) rotate(0);}
+            50%{transform: translateX(var(--tr)) rotate(180deg);}
+            80%{transform: translateX(0) rotate(180deg);}
+            100%{transform: translateX(0) rotate(359deg);}
+        }
+
+/*        --------------------------------------------*/
+        
+/* ---------       About me skills----------------------*/
+        
+.container-skills {
+    position: relative;
+    width: 80%;
+    margin-left: 100px;
+/*    justify-content: center;*/
+/*    width: 500px;*/
+}
+
+.container-skills h2 {
+    color: deepskyblue;
+}
+
+.container-skills .skills {
+    position: relative;
+    display: flex;
+    margin: 20px 0;
+    padding: 24px 10px 18px;
+    background: linear-gradient(#616161 0%, #333 10%, #222);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #000;
+    transition: 0.5s;
+}
+
+.container-skills:hover .skills {
+    opacity: 0.05;
+}
+
+.container-skills .skills:hover {
+    opacity: 1;
+    transform: scale(1.1)
+}
+
+.container-skills .skills:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: rgba(255,255,255,.1);
+    z-index: 10;
+}
+
+.container-skills .skills .Name {
+    position: relative;
+    width: 110px;
+    text-align: right;
+    color: #fff;
+    margin-top: -2px;
+    text-transform: uppercase;
+}
+
+.container-skills .skills .Value {
+    position: relative;
+    width: 40px;
+    text-align: left;
+    color: #fff;
+    margin-top: -2px;
+    text-transform: uppercase;
+}
+
+.container-skills .skills .percent {
+    position: relative;
+    width: calc(100% - 150px);
+    height: 20px;
+    margin: 0 10px;
+    border-radius: 10px;
+    background: #151515;
+    box-shadow: inset 0 0 10px #000;
+    overflow: hidden;
+}
+
+.container-skills .skills .percent .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: inset 0 0 2px #000;
+    animation: animate 4s ease-in-out forwards;
+}
+
+@keyframes animate
+{
+    from{
+        width: 0;
+    }
+}
+
+.container-skills .skills:nth-child(2) .percent .progress {
+    background: linear-gradient(45deg, #1fe6ff, #673AB7);
+}
+
+.container-skills .skills:nth-child(3) .percent .progress {
+    background: linear-gradient(45deg, #3bc0ff, #33ff00);
+}
+
+.container-skills .skills:nth-child(4) .percent .progress {
+    background: linear-gradient(45deg, #ffee54, #ff00ca);
+}
+
+.container-skills .skills:nth-child(5) .percent .progress {
+    background: linear-gradient(45deg, #22ffde, #2196F3);
+}
+
+.container-skills .skills:nth-child(6) .percent .progress {
+    background: linear-gradient(45deg, #880704, #2100F3);
+}
+        
+.container-skills .skills:nth-child(7) .percent .progress {
+    background: linear-gradient(45deg, #ffff88, #219999);
+}
+        
+/*        ----------------------------------*/
+        
+/*        ----------Contact---------------*/
+        
+.container-contact {
+    width: 90%;
+    padding: 10px;
+    padding-top: 0px;
+    margin-left: 55px;
+}
+
+.container-contact h2 {
+/*
+    width: 100%;
+    text-align: center;
+    color: #45f3ff;
+    font-size: 36px;
+    margin-bottom: 10px;
+*/
+    color: deepskyblue;
+}
+
+.container-contact .row100 {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+/*    color: #000;*/
+}
+
+.container-contact .row100 .col {
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+    margin: 30px 0 10px;
+    transition: 0.5s;
+}
+
+.container-contact .row100 .inputBox {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    color: #45f3ff;
+}
+
+.container-contact .row100 .inputBox input, 
+.container-contact .row100 .inputBox.textarea textarea{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding: 0 10px;
+    z-index: 1;
+    color: #000;
+}
+
+.container-contact .row100 .inputBox .text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 40px;
+    font-size: 18px;
+    padding: 0 10px;
+    display: block;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.container-contact .row100 .inputBox input:focus + .text,
+.container-contact .row100 .inputBox input:valid + .text
+{
+    top: -35px;
+    left: -10px;
+}
+
+.container-contact .row100 .inputBox .line {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #45f3ff;
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.container-contact .row100 .inputBox input:focus ~ .line,
+.container-contact .row100 .inputBox input:valid ~ .line
+{
+    height: 100%;
+}
+
+.container-contact .row100 .inputBox.textarea {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    padding: 10px 0;
+}
+
+.container-contact .row100 .inputBox.textarea textarea{
+    height: 100%;
+    resize: none;
+}
+
+.container-contact .row100 .inputBox textarea:focus + .text,
+.container-contact .row100 .inputBox textarea:valid + .text
+{
+    top: -35px;
+    left: -10px;
+}
+
+.container-contact .row100 .inputBox textarea:focus ~ .line,
+.container-contact .row100 .inputBox textarea:valid ~ .line
+{
+    height: 100%;
+}
+
+input[type="submit"] {
+    border: none;
+    padding: 7px 35px;
+    cursor: pointer;
+    outline: none;
+    background: #45f3ff;
+    color: #000;
+    font-size: 18px;
+    border-radius: 2px;
+}
+
+/* Tab active state */        
+        
+/*-----------------------------------------------------        */
+        
+        
+/*        -------------------------*/
+        
+        
+        
+        @media (max-width:768px){
+            .row-halves{
+                display: block;
+            }
+            .row-halves .col {
+                width: 100%;
+                margin: 0 0 10px 0;
+            }
+        }
+        
+        @media (max-width:601px){
+            .aside{
+                display: none;
+            }
+            .main {
+                width: 100%;
+                margin: 0 auto;
+                padding: 12px 25px;
+            }
+            header{
+                margin-top: 80px;
+            }
+            header h1 {
+                font-size: 3em;
+                line-height: 1.4em;
+            }
+            header h5{
+                font-size: 1em;
+                letter-spacing: 2px;
+            }
+            .mobile-nav {
+                position: fixed;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                background: rgba(0,0,0,0.8);
+                z-index: 1;
+            }
+            .mobile-nav a {
+                width: 100%;
+                color: #b2b2b2;
+                text-transform: uppercase;
+                font-size: 0.875em;
+                letter-spacing: 2px;
+                text-align: center;
+                padding: 10px 10px;
+                transition: all 0.35s;
+            }
+            .mobile-nav a:hover {
+                background: #b2b2b2;
+                color: #222;
+            }
+            
+        }
+        
+        @media (min-width:600px){
+            .mobile-nav{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <aside>
+        <nav>
+            <a href="#home"><i class="material-icons md-36">home</i>
+            <p>Home</p>
+            </a>
+
+            <a href="#about"><i class="material-icons md-36">person</i>
+            <p>About</p>
+            </a>
+
+            <a href="#folio"><i class="material-icons md-36">image</i>
+            <p>Portfolio</p>
+            </a>
+
+            <a href="#contact"><i class="material-icons md-36">mail</i>
+            <p>Contact</p>
+            </a>
+        </nav>
+    </aside>
+    <nav class="mobile-nav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#folio">Portfolio</a>
+        <a href="#contact">Cotact</a>
+    </nav>
+    <main>
+        <header class="home" id="home"><br>
+            <h1>I'm Lisvan Porro</h1>
+            <h5>Software Engeneer && Full Stack Developer</h5>
+            <img src="perfil.jpg" alt="">
+            <div class="btn" onclick="javascript:window.location.href='#contact'">
+                <span>Say Hello</span>
+                <div class="dot"></div>
+            </div>
+        </header>
+    </main>
+ 
+    <section id="about" class="about">
+        <div class="container-skills">
+            <h2>CSS Skills Bar UI Design</h2>
+            <p>
+            <span>Hello Iam Lisvan Porro </span> Iam Designer and
+             Developer, live long learner, ready for new 
+             opportunities. A bit about me, i love music, the 
+             arts, teach and all the things creative.  
+            </p>
+            <div class="skills">
+                <span class="Name">HTML</span>
+                <div class="percent">
+                    <div class="progress" style="width: 90%"></div>
+                </div>
+                <span class="Value">90%</span>
+            </div>
+            <div class="skills">
+                <span class="Name">CSS</span>
+                <div class="percent">
+                    <div class="progress" style="width: 75%"></div>
+                </div>
+                <span class="Value">75%</span>
+            </div>
+            <div class="skills">
+                <span class="Name">Javascript</span>
+                <div class="percent">
+                    <div class="progress" style="width: 72%"></div>
+                </div>
+                <span class="Value">72%</span>
+            </div>
+            <div class="skills">
+                <span class="Name">Python</span>
+                <div class="percent">
+                    <div class="progress" style="width: 85%"></div>
+                </div>
+                <span class="Value">85%</span>
+            </div>
+            <div class="skills">
+                <span class="Name">Odoo</span>
+                <div class="percent">
+                    <div class="progress" style="width: 80%"></div>
+                </div>
+                <span class="Value">80%</span>
+            </div>
+        </div>
+    </section>
+    
+    <section class="folio" id="folio">
+        <h2>Portfolio</h2>
+        <div class="row-halves">
+           <div class="col">
+<!--                <img src="perfil.jpg" alt="">-->
+                <img src="rest1.jpeg" alt="no se ve">
+                
+<!--                <h3>UX-Design</h3>-->
+                <h3>WEB DEVELOPMENT</h3>
+                <p>
+<!--                    Using HTML, CSS, and JavaScript with pre-processors and build tools such as Sass and Grunt, I have a passion for developing pixel-perfect websites and apps while maintaining a semantic, modular, and DRY code base.-->
+                </p>
+            </div>
+           
+            <div class="col">
+                <img src="eccomerce.jpeg" alt="">
+                <h3>eCOMMERCE</h3>
+<!--
+                <p>
+                    Building Responsive and thouthful sites for
+                    small and large business.
+                </p>
+-->
+            </div>
+            
+            <div class="col">
+                <img src="blog.jpg" alt="">
+                <h3>RESPONSIVE UI DESIGN</h3>
+                <p>
+<!--                    Me esfuerzo por desarrollar e implementar interfaces receptivas y estéticamente agradables para sitios web y aplicaciones que se adapten a cualquier tipo de dispositivo, plataforma o navegador.-->
+                </p>
+            </div>
+            
+            <div class="col">
+                <img src="Odoo_modules2.png" alt="">
+                <h3>ODOO</h3>
+<!--
+                <p>
+                    
+                </p>
+-->
+            </div>
+        
+        </div>
+        
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container-contact">
+            <h2>Contacts us</h2>
+            <div class="row100">
+                <div class="col">
+                    <div class="inputBox">
+                        <input type="text" name="" required="required">
+                        <span class="text">First Name</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="inputBox">
+                        <input type="text" name="" required="required">                        
+                        <span class="text">Last Name</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row100">
+                <div class="col">
+                    <div class="inputBox">
+                        <input type="text" name="" required="required">                        
+                        <span class="text">Email</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="inputBox ">
+                        <input type="text" name="" required="required">                        
+                        <span class="text">Mobile</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row100">
+                <div class="col">
+                    <div class="inputBox textarea">
+                        <textarea required="required"></textarea>
+                        <span class="text">Type your message Here...</span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row100">
+                <div class="col">
+                    <input type="submit" value="Send">
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--    </section>-->
+    
+    <footer>
+        <section class="top-bar">
+            <a href="https://www.facebook.com/lisvan.porropimienta" target="_blank"><i class="fa fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/lisvan-porro-pimienta-682936168/" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a href=""><i class="fa fa-github"></i></a>
+        </section>
+        
+        <section class="bottom-bar">
+            <p>&copy 2019 | All rights reserved</p>
+        </section>
+    </footer>
+    
+    <script>
+        let btn = document.getElementById("by_contact");
+//        btn.innerHTML = "#contact";
+        
+        
+    </script>
+</body>
+</html>
